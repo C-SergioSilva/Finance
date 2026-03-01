@@ -1,0 +1,23 @@
+﻿using Finance.Domain.Models;
+
+namespace Finance.Service.EntitiesVO
+{
+    public class TransactionVO
+    {
+        public Guid Id { get; set; } = Guid.NewGuid(); // Já inicia um novo GUID
+        public DateTime CreateAt { get; set; } = DateTime.Now;
+        public bool Deleted { get; set; } = false;
+
+        public string Description { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime Date { get; set; }
+
+        // Relacionamentos (FKs)
+        public Guid UserId { get; set; }
+        public int CategoryId { get; set; }
+
+        // Propriedades de Navegação (Para o Entity Framework entender o triângulo)
+        public virtual UserVO UserVO { get; set; }
+        public virtual CategoryVO CategoryVO { get; set; } 
+    }
+}
