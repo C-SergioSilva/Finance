@@ -32,5 +32,21 @@ namespace Fincance.Infrastructure.Repositories
 
             return income - expense;
         }
+
+        public async Task<IEnumerable<Transaction>> GetByUser(Guid userId)
+        {
+            return await _context.Transactions
+                .Include(t => t.Category) // Faz o "Join" com a tabela de categorias
+                .Where(t => t.UserId == userId && !t.Deleted) // Filtra por usuário e ignora deletados
+                .OrderByDescending(t => t.Date) // Mostra as mais recentes primeiro
+                .ToListAsync();
+        }
+
+        public async Task<Transaction> GetByIdWithCategory(Guid id) 
+        {
+            return await _context.Transactions
+                .Include(t => t.Category) // <--- O segredo está aqui!
+                .FirstOrDefaultAsync(t => t.Id == id && !t.Deleted);
+        }
     }
 }

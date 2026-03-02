@@ -1,8 +1,12 @@
-﻿using Fincance.Infrastructure.Repositories;
+﻿using Financas.Negocio.Negocios;
+using Finance.Api.Middlewares;
 using Finance.Domain.Interfaces;
+using Finance.Service.Interfaces;
+using Finance.Service.Services;
 using Fincance.Infrastructure.Context;
-using Microsoft.EntityFrameworkCore;
+using Fincance.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -70,6 +74,10 @@ builder.Services.AddCors(options =>
 
 #region [--- DEPENDENCY INJECTION ---]
 // SERVICES
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
 // REPOSITOREIS
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -113,6 +121,9 @@ builder.Services.AddSwaggerGen(c =>
 }); ;
 
 var app = builder.Build();
+
+// início do pipeline
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 //// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

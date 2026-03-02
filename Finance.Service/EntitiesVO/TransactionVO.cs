@@ -1,6 +1,4 @@
-﻿using Finance.Domain.Models;
-
-namespace Finance.Service.EntitiesVO
+﻿namespace Finance.Service.EntitiesVO
 {
     public class TransactionVO
     {
@@ -14,7 +12,7 @@ namespace Finance.Service.EntitiesVO
 
         // Relacionamentos (FKs)
         public Guid UserId { get; set; }
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
 
         // Propriedades de Navegação (Para o Entity Framework entender o triângulo)
         public virtual UserVO UserVO { get; set; }

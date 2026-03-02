@@ -21,8 +21,4 @@
     <ProjectReference Include="..\Finance.Service\Finance.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Middlewares\" />
-  </ItemGroup>
-
 </Project>

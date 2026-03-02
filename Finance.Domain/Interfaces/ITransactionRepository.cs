@@ -11,5 +11,10 @@ namespace Finance.Domain.Interfaces
 
         // Buscar o saldo total (Receitas - Despesas)
         Task<decimal> GetBalance(Guid userId);
+
+        // Adicione esta linha:
+        Task<IEnumerable<Transaction>> GetByUser(Guid userId);
+
+        Task<Transaction> GetByIdWithCategory(Guid id); 
     }
 }
