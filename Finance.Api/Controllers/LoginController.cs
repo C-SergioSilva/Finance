@@ -17,13 +17,13 @@ namespace Finance.Api.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody] UserVO loginRequest)
+        public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {
            var user = await userService.Authenticate(loginRequest.Email, loginRequest.Password);
 
             if (user != null)
             {
-                var token = service.GeradorJwtToken(loginRequest);
+                var token = service.GeradorJwtToken(user);
 
                 // 3. Retornamos o token e os dados básicos do usuário (útil para o Angular)
                 return Ok(new

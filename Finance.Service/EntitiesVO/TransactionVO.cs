@@ -13,9 +13,5 @@
         // Relacionamentos (FKs)
         public Guid UserId { get; set; }
         public Guid CategoryId { get; set; }
-
-        // Propriedades de Navegação (Para o Entity Framework entender o triângulo)
-        public virtual UserVO UserVO { get; set; }
-        public virtual CategoryVO CategoryVO { get; set; } 
     }
 }

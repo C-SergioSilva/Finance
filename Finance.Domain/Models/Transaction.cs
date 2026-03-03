@@ -11,7 +11,7 @@ namespace Finance.Domain.Models
 
         // Relacionamentos (FKs)
         public Guid UserId { get; set; }
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
 
         // Propriedades de Navegação (Para o Entity Framework entender o triângulo)
         public virtual User User { get; set; }

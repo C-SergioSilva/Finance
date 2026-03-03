@@ -1,6 +1,4 @@
-﻿using Finance.Domain.Models;
-
-namespace Finance.Service.EntitiesVO
+﻿namespace Finance.Service.EntitiesVO
 {
     public class CategoryVO
     {
@@ -15,13 +13,5 @@ namespace Finance.Service.EntitiesVO
         // Chave Estrangeira para o Usuário
         public Guid UserId { get; set; }
 
-        // Propriedade de Navegação
-        public virtual User User { get; set; }
-        public virtual ICollection<TransactionVO> Transactions { get; set; } 
-
-        public CategoryVO() 
-        {
-            Transactions = new List<TransactionVO>();
-        }
     }
 }

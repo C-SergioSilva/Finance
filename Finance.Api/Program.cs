@@ -77,7 +77,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 
 // REPOSITOREIS
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -118,7 +118,7 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
-}); ;
+});
 
 var app = builder.Build();
 
