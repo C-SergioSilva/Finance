@@ -19,9 +19,9 @@ namespace Finance.Api.Controllers
 
         // Endpoint para Registro (Sem [Authorize] pois é público)
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserVO vo)
+        public async Task<IActionResult> Register([FromBody] UserVO userVO)
         {
-            var result = await _service.Create(vo);
+            var result = await _service.Create(userVO);
             return Ok(result);
         }
 
